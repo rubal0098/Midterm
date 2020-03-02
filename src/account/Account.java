@@ -7,13 +7,17 @@ package account;
 
 /**
  * date: March 2nd
- * @author Sivagama
+ * @author Rubal Singh
  */
 public class Account {
 
     
-        private double balance;
-        private double interestRate=0.23;
+        private double initialbalance = 50;
+        /**
+         * new interest rate
+         * interest at a rate of 3% after one month, it is calculated
+         */
+        private double interestRate= 6.25;
         private String user;
  
      /**constructor that takes the initial balance
@@ -21,7 +25,7 @@ public class Account {
       */
         public Account(double initialBalance,String givenUser)
         {
-            balance=initialBalance;
+            initialbalance=initialBalance;
             user=givenUser;
             //Note that the initial balance must be greater than 50.       
         }
@@ -30,23 +34,31 @@ public class Account {
       * updating balance*/
         public void credit(double amount)
         {
-            balance=getBalance()+amount;
+           initialbalance=getBalance()+amount;
         }
 
      /**The method for debit(withdrawing amount) and 
       * updating balance */
         public void debit(double amount)
         {
-            balance=getBalance()-amount;
+          initialbalance=getBalance()-amount;
 
         }
         
      /**The getter for the balance
+      * it has added new conditions
      * @return the balance
      */
         public double getBalance() 
         {
-        return balance;
+        if (initialbalance>=50){
+            System.out.println("account was created");
+        }
+        else{
+            System.out.println("account was not created");
+        }
+            return initialbalance;
+        
         }
 
     /**The getter for InterestRate
@@ -62,6 +74,14 @@ public class Account {
      */
     public String getUser() {
         return user;
+    }
+   /**
+    * 
+    * return balance after applying interest rate
+    * @return 
+    */ 
+    public double getBalanceAfterInterest(){
+        return initialbalance * interestRate ;
     }
     
     
